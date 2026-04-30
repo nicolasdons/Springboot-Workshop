@@ -1,5 +1,6 @@
 package com.projetospringjava.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -18,12 +19,14 @@ private static final long serialVersionUID = 1L;
     private String email;
     private String celular;
     private String senha;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
-    public List<Order> getOrders() {
-        return orders;
+    public List<Order>  orders = new ArrayList<>();{
+
     }
 
-    private List<Order> orders = new ArrayList<>();
+
 
     public User() {
 
