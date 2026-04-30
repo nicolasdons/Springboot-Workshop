@@ -3,6 +3,8 @@ package com.projetospringjava.demo.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +18,12 @@ private static final long serialVersionUID = 1L;
     private String email;
     private String celular;
     private String senha;
+    @OneToMany(mappedBy = "client")
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    private List<Order> orders = new ArrayList<>();
 
     public User() {
 
