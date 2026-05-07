@@ -29,6 +29,9 @@ private Integer orderStatus;
     @OneToMany(mappedBy = "id.order")
     private Set<OrderItem> items = new HashSet<>();
 
+    @OneToOne(mappedBy = "order", cascade =CascadeType.ALL )
+    private Payment payment;
+
     public Order(){
 
     }
@@ -67,6 +70,8 @@ private Integer orderStatus;
         return Objects.equals(id, order.id);
     }
 
+
+
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
@@ -86,5 +91,14 @@ private Integer orderStatus;
 
     public void setClient(User client) {
         this.client = client;
+    }
+
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    public Payment getPayment() {
+        return payment;
     }
 }
