@@ -1,5 +1,6 @@
 package com.projetospringjava.demo.entities;
 
+import com.projetospringjava.demo.entities.OrderItem;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.projetospringjava.demo.entities.enums.OrderStatus;
 import jakarta.persistence.*;
@@ -68,6 +69,14 @@ private Integer orderStatus;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
         return Objects.equals(id, order.id);
+    }
+
+    public Double getTotal() {
+        double sum = 0.0;
+        for (OrderItem x : items) {
+            sum += + x.getsubTotal();
+        }
+        return sum;
     }
 
 
